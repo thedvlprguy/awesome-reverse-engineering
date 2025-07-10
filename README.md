@@ -30,16 +30,16 @@
 > 🧠 Core theory + practical workflows
 
 * [✅ Reverse Engineering for Beginners (free PDF)](https://beginners.re/)
-* [Practical Malware Analysis](http://amzn.to/2jljYqE)
-* [Reversing: Secrets of Reverse Engineering](http://amzn.to/2jlnBwX)
-* [Practical Reverse Engineering](http://amzn.to/2iusXRW)
-* [Gray Hat Hacking](http://amzn.to/2jllIAi)
-* [Hacking: The Art of Exploitation](http://amzn.to/2jnkV19)
-* [The IDA Pro Book](http://amzn.to/2jTicOg)
-* [Radare2 Book](https://radare.gitbooks.io/radare2book/content/)
+* [Practical Malware Analysis](https://www.kea.nu/files/textbooks/humblesec/practicalmalwareanalysis.pdf)
+* [Reversing: Secrets of Reverse Engineering](https://repo.zenk-security.com/Reversing%20.%20cracking/Reversing%20-%20Secrets%20Of%20Reverse%20Engineering%20(2005).pdf)
+* [Practical Reverse Engineering](https://archive.org/details/PracticalReverseEngineering_201412)
+* [Gray Hat Hacking](https://pages.cs.wisc.edu/~ace/media/gray-hat-hacking.pdf)
+* [Hacking: The Art of Exploitation](https://www.kea.nu/files/textbooks/humblesec/hacking_artofexploitation_2ndedition.pdf)
+* [The IDA Pro Book](https://pub.deadnet.se/Books%20and%20Docs%20on%20Hacking/Hacking/Reversing%20and%20Exploiting/Tools/The%20IDA%20Pro%20Book.pdf)
+* [Radare2 Book](https://book.rada.re/)
 * [Access Denied (Free PDF)](https://github.com/shaykhsiddique/academic-/blob/master/CSE107/Access%20Denied.pdf)
-* [The Antivirus Hacker's Handbook](http://amzn.to/2jn9G99)
-* [The Rootkit Arsenal](http://amzn.to/2jlgioK)
+* [The Antivirus Hacker's Handbook](https://repo.zenk-security.com/Magazine%20E-book/Antivirus%20hackers%20handbook.pdf)
+* [The Rootkit Arsenal](https://archive.org/details/rootkitarsenales0002blun)
 
 ---
 
