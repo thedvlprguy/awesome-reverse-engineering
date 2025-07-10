@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧬 Reverse Engineering Resources</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Nunito&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(to right, #3e2f2f, #5a4a42);
+      color: #fff3e6;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: #4a3f3f;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #f0e0d0;
+    }
+    .cat {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    .cat img {
+      width: 180px;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 1rem;
+    }
+    h2 {
+      border-bottom: 1px solid #a3907a;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+      color: #ffe6cc;
+    }
+    ul {
+      list-style-type: '📎 ';
+      padding-left: 1.5rem;
+    }
+    a {
+      color: #ffb88c;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .toc {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    .toc ul {
+      list-style-type: '📌 ';
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧬 Reverse Engineering Resources</h1>
+    <p>A curated and battle-tested collection of reverse engineering resources for Windows, Linux, Android, and beyond.</p>
+  </header>
+
+  <div class="cat">
+    <img src="https://cdn.pixabay.com/photo/2016/03/27/22/22/cat-1285634_960_720.jpg" alt="Cute Cat" />
+  </div>
+
+  <div class="container">
+    <section class="toc">
+      <h2>📂 Table of Contents</h2>
+      <ul>
+        <li><a href="#books">📘 Books</a></li>
+        <li><a href="#courses">🎓 Courses</a></li>
+        <li><a href="#practice-platforms">🧪 Practice Platforms</a></li>
+        <li><a href="#hex-editors">🧷 Hex Editors</a></li>
+        <li><a href="#binary-format-tools">📦 Binary Formats & PE Tools</a></li>
+        <li><a href="#disassemblers--decompilers">🔍 Disassemblers & Decompilers</a></li>
+        <li><a href="#binary-analysis-frameworks">🧠 Binary Analysis Frameworks</a></li>
+        <li><a href="#bytecode-analysis">⚙ Bytecode Tools</a></li>
+        <li><a href="#import-reconstruction">🪝 Import Rebuilding</a></li>
+        <li><a href="#dynamic-analysis">🔎 Dynamic Analysis</a></li>
+        <li><a href="#debugging-tools">🐎 Debugging Tools</a></li>
+        <li><a href="#mac-decryption-tools">🍏 MacOS RE</a></li>
+        <li><a href="#document-analysis">📄 Document & File Analysis</a></li>
+        <li><a href="#scripting-for-re">🧬 Scripting for RE</a></li>
+        <li><a href="#android-reverse-engineering">📱 Android RE</a></li>
+        <li><a href="#yara-malware-detection-rules">🧿 YARA Rules & Malware Hunting</a></li>
+        <li><a href="#bonus-links">🛠 Bonus Links</a></li>
+      </ul>
+    </section>
+
+    <section id="books">
+      <h2>📘 Books</h2>
+      <ul>
+        <li><a href="https://beginners.re/">Reverse Engineering for Beginners (free PDF)</a></li>
+        <li><a href="https://www.kea.nu/files/textbooks/humblesec/practicalmalwareanalysis.pdf">Practical Malware Analysis</a></li>
+        <li><a href="https://repo.zenk-security.com/Reversing%20.%20cracking/Reversing%20-%20Secrets%20Of%20Reverse%20Engineering%20(2005).pdf">Reversing: Secrets of Reverse Engineering</a></li>
+        <li><a href="https://archive.org/details/PracticalReverseEngineering_201412">Practical Reverse Engineering</a></li>
+        <li><a href="https://pages.cs.wisc.edu/~ace/media/gray-hat-hacking.pdf">Gray Hat Hacking</a></li>
+        <li><a href="https://www.kea.nu/files/textbooks/humblesec/hacking_artofexploitation_2ndedition.pdf">Hacking: The Art of Exploitation</a></li>
+        <li><a href="https://pub.deadnet.se/Books%20and%20Docs%20on%20Hacking/Hacking/Reversing%20and%20Exploiting/Tools/The%20IDA%20Pro%20Book.pdf">The IDA Pro Book</a></li>
+        <li><a href="https://book.rada.re/">Radare2 Book</a></li>
+        <li><a href="https://github.com/shaykhsiddique/academic-/blob/master/CSE107/Access%20Denied.pdf">Access Denied</a></li>
+        <li><a href="https://repo.zenk-security.com/Magazine%20E-book/Antivirus%20hackers%20handbook.pdf">The Antivirus Hacker's Handbook</a></li>
+        <li><a href="https://archive.org/details/rootkitarsenales0002blun">The Rootkit Arsenal</a></li>
+      </ul>
+    </section>
+
+    <!-- Repeat this structure for the other sections using id anchors -->
+
+    <footer style="margin-top: 3rem; text-align: center; font-size: 0.9rem; color: #d9c4b0;">
+      <p>Made with ☕, 🧠, and a little 🐱 — Cappuccino Macchiato Edition</p>
+    </footer>
+  </div>
+</body>
+</html>
