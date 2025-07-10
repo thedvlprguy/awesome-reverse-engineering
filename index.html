@@ -1,131 +1,772 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🧬 Reverse Engineering Resources</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Nunito&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Nunito', sans-serif;
-      background: linear-gradient(to right, #3e2f2f, #5a4a42);
-      color: #fff3e6;
-      line-height: 1.6;
-    }
-    header {
-      text-align: center;
-      padding: 2rem;
-      background-color: #4a3f3f;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #f0e0d0;
-    }
-    .cat {
-      display: flex;
-      justify-content: center;
-      margin: 1rem 0;
-    }
-    .cat img {
-      width: 180px;
-      border-radius: 1rem;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 1rem;
-    }
-    h2 {
-      border-bottom: 1px solid #a3907a;
-      padding-bottom: 0.5rem;
-      margin-top: 2rem;
-      color: #ffe6cc;
-    }
-    ul {
-      list-style-type: '📎 ';
-      padding-left: 1.5rem;
-    }
-    a {
-      color: #ffb88c;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .toc {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1rem;
-      border-radius: 10px;
-      margin-bottom: 2rem;
-    }
-    .toc ul {
-      list-style-type: '📌 ';
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧬 Reverse Engineering Resources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #00ff88, #00ccff, #ff0088);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+            margin: 20px 0;
+        }
+
+        .toc {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .toc h2 {
+            color: #00ff88;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .toc-item {
+            color: #00ccff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .toc-item:hover {
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            transform: translateX(5px);
+        }
+
+        .section {
+            margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .section h2 {
+            color: #00ff88;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2::before {
+            content: '';
+            width: 4px;
+            height: 30px;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            border-radius: 2px;
+        }
+
+        .section p {
+            color: #888;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .resource-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .resource-item a {
+            color: #00ccff;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .resource-item a:hover {
+            color: #00ff88;
+        }
+
+        .resource-item .description {
+            color: #aaa;
+            font-size: 0.9em;
+        }
+
+        .highlight {
+            background: rgba(255, 186, 73, 0.1);
+            border-left: 3px solid #FFBA49;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .highlight a {
+            color: #FFBA49;
+            font-weight: bold;
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .matrix-char {
+            position: absolute;
+            color: #00ff88;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            opacity: 0.1;
+            animation: matrix-fall 10s linear infinite;
+        }
+
+        @keyframes matrix-fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .footer .contribute {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .footer .contribute h3 {
+            color: #ff0088;
+            margin-bottom: 10px;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #00ccff, #ff0088);
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>🧬 Reverse Engineering Resources</h1>
-    <p>A curated and battle-tested collection of reverse engineering resources for Windows, Linux, Android, and beyond.</p>
-  </header>
+    <div class="matrix-bg" id="matrix-bg"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1><span class="emoji">🧬</span>Reverse Engineering Resources</h1>
+            <p>A curated and battle-tested collection of reverse engineering resources for Windows, Linux, Android, and beyond.</p>
+            <div class="divider"></div>
+        </div>
 
-  <div class="cat">
-    <img src="https://cdn.pixabay.com/photo/2016/03/27/22/22/cat-1285634_960_720.jpg" alt="Cute Cat" />
-  </div>
+        <div class="toc">
+            <h2><span class="emoji">📂</span>Table of Contents</h2>
+            <div class="toc-grid">
+                <a href="#books" class="toc-item"><span class="emoji">📘</span>Books</a>
+                <a href="#courses" class="toc-item"><span class="emoji">🎓</span>Courses</a>
+                <a href="#practice" class="toc-item"><span class="emoji">🧪</span>Practice Platforms</a>
+                <a href="#hex-editors" class="toc-item"><span class="emoji">🧷</span>Hex Editors</a>
+                <a href="#binary-tools" class="toc-item"><span class="emoji">📦</span>Binary Format Tools</a>
+                <a href="#disassemblers" class="toc-item"><span class="emoji">🔍</span>Disassemblers</a>
+                <a href="#analysis-frameworks" class="toc-item"><span class="emoji">🧠</span>Analysis Frameworks</a>
+                <a href="#bytecode" class="toc-item"><span class="emoji">⚙</span>Bytecode Tools</a>
+                <a href="#import-rebuild" class="toc-item"><span class="emoji">🪝</span>Import Rebuilding</a>
+                <a href="#dynamic-analysis" class="toc-item"><span class="emoji">🔎</span>Dynamic Analysis</a>
+                <a href="#debugging" class="toc-item"><span class="emoji">🐎</span>Debugging Tools</a>
+                <a href="#macos" class="toc-item"><span class="emoji">🍏</span>MacOS RE</a>
+                <a href="#document-analysis" class="toc-item"><span class="emoji">📄</span>Document Analysis</a>
+                <a href="#scripting" class="toc-item"><span class="emoji">🧬</span>Scripting for RE</a>
+                <a href="#android" class="toc-item"><span class="emoji">📱</span>Android RE</a>
+                <a href="#yara" class="toc-item"><span class="emoji">🧿</span>YARA Rules</a>
+                <a href="#bonus" class="toc-item"><span class="emoji">🛠</span>Bonus Links</a>
+            </div>
+        </div>
 
-  <div class="container">
-    <section class="toc">
-      <h2>📂 Table of Contents</h2>
-      <ul>
-        <li><a href="#books">📘 Books</a></li>
-        <li><a href="#courses">🎓 Courses</a></li>
-        <li><a href="#practice-platforms">🧪 Practice Platforms</a></li>
-        <li><a href="#hex-editors">🧷 Hex Editors</a></li>
-        <li><a href="#binary-format-tools">📦 Binary Formats & PE Tools</a></li>
-        <li><a href="#disassemblers--decompilers">🔍 Disassemblers & Decompilers</a></li>
-        <li><a href="#binary-analysis-frameworks">🧠 Binary Analysis Frameworks</a></li>
-        <li><a href="#bytecode-analysis">⚙ Bytecode Tools</a></li>
-        <li><a href="#import-reconstruction">🪝 Import Rebuilding</a></li>
-        <li><a href="#dynamic-analysis">🔎 Dynamic Analysis</a></li>
-        <li><a href="#debugging-tools">🐎 Debugging Tools</a></li>
-        <li><a href="#mac-decryption-tools">🍏 MacOS RE</a></li>
-        <li><a href="#document-analysis">📄 Document & File Analysis</a></li>
-        <li><a href="#scripting-for-re">🧬 Scripting for RE</a></li>
-        <li><a href="#android-reverse-engineering">📱 Android RE</a></li>
-        <li><a href="#yara-malware-detection-rules">🧿 YARA Rules & Malware Hunting</a></li>
-        <li><a href="#bonus-links">🛠 Bonus Links</a></li>
-      </ul>
-    </section>
+        <div id="books" class="section">
+            <h2><span class="emoji">📘</span>Books</h2>
+            <p>🧠 Core theory + practical workflows</p>
+            <div class="resource-grid">
+                <div class="resource-item highlight">
+                    <a href="https://beginners.re/" target="_blank">Reverse Engineering for Beginners</a>
+                    <div class="description">Free comprehensive PDF guide</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://www.kea.nu/files/textbooks/humblesec/practicalmalwareanalysis.pdf" target="_blank">Practical Malware Analysis</a>
+                    <div class="description">Essential malware analysis techniques</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://repo.zenk-security.com/Reversing%20.%20cracking/Reversing%20-%20Secrets%20Of%20Reverse%20Engineering%20(2005).pdf" target="_blank">Reversing: Secrets of Reverse Engineering</a>
+                    <div class="description">Classic reversing fundamentals</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://archive.org/details/PracticalReverseEngineering_201412" target="_blank">Practical Reverse Engineering</a>
+                    <div class="description">Hands-on approach to RE</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://pages.cs.wisc.edu/~ace/media/gray-hat-hacking.pdf" target="_blank">Gray Hat Hacking</a>
+                    <div class="description">Ethical hacking techniques</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://www.kea.nu/files/textbooks/humblesec/hacking_artofexploitation_2ndedition.pdf" target="_blank">Hacking: The Art of Exploitation</a>
+                    <div class="description">Deep dive into exploitation</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://pub.deadnet.se/Books%20and%20Docs%20on%20Hacking/Hacking/Reversing%20and%20Exploiting/Tools/The%20IDA%20Pro%20Book.pdf" target="_blank">The IDA Pro Book</a>
+                    <div class="description">Master IDA Pro disassembler</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://book.rada.re/" target="_blank">Radare2 Book</a>
+                    <div class="description">Complete Radare2 framework guide</div>
+                </div>
+            </div>
+        </div>
 
-    <section id="books">
-      <h2>📘 Books</h2>
-      <ul>
-        <li><a href="https://beginners.re/">Reverse Engineering for Beginners (free PDF)</a></li>
-        <li><a href="https://www.kea.nu/files/textbooks/humblesec/practicalmalwareanalysis.pdf">Practical Malware Analysis</a></li>
-        <li><a href="https://repo.zenk-security.com/Reversing%20.%20cracking/Reversing%20-%20Secrets%20Of%20Reverse%20Engineering%20(2005).pdf">Reversing: Secrets of Reverse Engineering</a></li>
-        <li><a href="https://archive.org/details/PracticalReverseEngineering_201412">Practical Reverse Engineering</a></li>
-        <li><a href="https://pages.cs.wisc.edu/~ace/media/gray-hat-hacking.pdf">Gray Hat Hacking</a></li>
-        <li><a href="https://www.kea.nu/files/textbooks/humblesec/hacking_artofexploitation_2ndedition.pdf">Hacking: The Art of Exploitation</a></li>
-        <li><a href="https://pub.deadnet.se/Books%20and%20Docs%20on%20Hacking/Hacking/Reversing%20and%20Exploiting/Tools/The%20IDA%20Pro%20Book.pdf">The IDA Pro Book</a></li>
-        <li><a href="https://book.rada.re/">Radare2 Book</a></li>
-        <li><a href="https://github.com/shaykhsiddique/academic-/blob/master/CSE107/Access%20Denied.pdf">Access Denied</a></li>
-        <li><a href="https://repo.zenk-security.com/Magazine%20E-book/Antivirus%20hackers%20handbook.pdf">The Antivirus Hacker's Handbook</a></li>
-        <li><a href="https://archive.org/details/rootkitarsenales0002blun">The Rootkit Arsenal</a></li>
-      </ul>
-    </section>
+        <div id="courses" class="section">
+            <h2><span class="emoji">🎓</span>Courses</h2>
+            <p>🔥 Learn from the pros and top universities</p>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="http://opensecuritytraining.info/Training.html" target="_blank">Open Security Training – Intro to RE</a>
+                    <div class="description">Free comprehensive RE training</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://tuts4you.com/download.php?list.17" target="_blank">Lena's Reversing for Newbies</a>
+                    <div class="description">Classic beginner-friendly tutorials</div>
+                </div>
+                <div class="resource-item">
+                    <a href="http://security.cs.rpi.edu/courses/binexp-spring2015/" target="_blank">Modern Binary Exploitation (RPISEC)</a>
+                    <div class="description">Advanced exploitation techniques</div>
+                </div>
+                <div class="resource-item highlight">
+                    <a href="https://x86re.com/index.html" target="_blank">x86re.com Interactive RE Platform</a>
+                    <div class="description">Browser-based x86 RE playground</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/RPISEC/Malware" target="_blank">RPISEC Malware Analysis Course</a>
+                    <div class="description">University-level malware analysis</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://recon.cx/" target="_blank">REcon Trainings</a>
+                    <div class="description">Professional RE conference training</div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Repeat this structure for the other sections using id anchors -->
+        <div id="practice" class="section">
+            <h2><span class="emoji">🧪</span>Practice Platforms</h2>
+            <p>🎯 Learn by doing — RE challenges, CTFs, CrackMes</p>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://crackmes.one" target="_blank">Crackmes.one</a>
+                    <div class="description">Large collection of reverse engineering challenges</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://www.root-me.org/en/Challenges/Cracking" target="_blank">Root Me – Cracking</a>
+                    <div class="description">Progressive cracking challenges</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://www.hackthebox.com/" target="_blank">HackTheBox Reversing</a>
+                    <div class="description">Premium RE challenges and labs</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://www.flare-on.com/" target="_blank">Flare-on Challenge</a>
+                    <div class="description">Annual FireEye RE competition</div>
+                </div>
+                <div class="resource-item">
+                    <a href="http://reversing.kr/" target="_blank">Reversing.kr</a>
+                    <div class="description">Korean RE challenge platform</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://picoctf.org/" target="_blank">picoCTF</a>
+                    <div class="description">Beginner-friendly CTF challenges</div>
+                </div>
+            </div>
+        </div>
 
-    <footer style="margin-top: 3rem; text-align: center; font-size: 0.9rem; color: #d9c4b0;">
-      <p>Made with ☕, 🧠, and a little 🐱 — Cappuccino Macchiato Edition</p>
-    </footer>
-  </div>
+        <div id="hex-editors" class="section">
+            <h2><span class="emoji">🧷</span>Hex Editors</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://mh-nexus.de/en/hxd/" target="_blank">HxD</a>
+                    <div class="description">Free Windows hex editor</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://www.sweetscape.com/010editor/" target="_blank">010 Editor</a>
+                    <div class="description">Professional hex editor with templates</div>
+                </div>
+                <div class="resource-item">
+                    <a href="http://www.hexworkshop.com/" target="_blank">Hex Workshop</a>
+                    <div class="description">Advanced hex editing suite</div>
+                </div>
+                <div class="resource-item">
+                    <a href="http://ridiculousfish.com/hexfiend/" target="_blank">HexFiend (macOS)</a>
+                    <div class="description">Fast macOS hex editor</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/evanmiller/hecate" target="_blank">hecate</a>
+                    <div class="description">Terminal-based hex editor</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="binary-tools" class="section">
+            <h2><span class="emoji">📦</span>Binary Format Tools</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="http://www.ntcore.com/exsuite.php" target="_blank">CFF Explorer</a>
+                    <div class="description">PE file format explorer</div>
+                </div>
+                <div class="resource-item">
+                    <a href="http://www.winitor.com/" target="_blank">PEStudio</a>
+                    <div class="description">PE file analysis tool</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://ntinfo.biz/" target="_blank">Detect It Easy (DIE)</a>
+                    <div class="description">Packer and compiler detection</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://cerbero.io/profiler/" target="_blank">Cerbero Profiler</a>
+                    <div class="description">Advanced binary analysis suite</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/gdbinit/MachOView" target="_blank">MachoView (macOS)</a>
+                    <div class="description">Mach-O file format viewer</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="disassemblers" class="section">
+            <h2><span class="emoji">🔍</span>Disassemblers & Decompilers</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://ghidra-sre.org/" target="_blank">Ghidra</a>
+                    <div class="description">NSA's free software analysis suite</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://hex-rays.com" target="_blank">IDA Free / Pro</a>
+                    <div class="description">Industry standard disassembler</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://binary.ninja/" target="_blank">Binary Ninja</a>
+                    <div class="description">Modern binary analysis platform</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://rada.re/n/" target="_blank">Radare2</a>
+                    <div class="description">Open-source reverse engineering framework</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://cutter.re/" target="_blank">Cutter</a>
+                    <div class="description">GUI for Radare2</div>
+                </div>
+                <div class="resource-item">
+                    <a href="http://hopperapp.com/" target="_blank">Hopper</a>
+                    <div class="description">macOS/Linux disassembler</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="analysis-frameworks" class="section">
+            <h2><span class="emoji">🧠</span>Binary Analysis Frameworks</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://github.com/angr/angr" target="_blank">angr</a>
+                    <div class="description">Binary analysis platform with symbolic execution</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/BinaryAnalysisPlatform/bap" target="_blank">Binary Analysis Platform (BAP)</a>
+                    <div class="description">OCaml-based binary analysis framework</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/Z3Prover/z3" target="_blank">z3 (Symbolic Solver)</a>
+                    <div class="description">Microsoft's theorem prover</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bytecode" class="section">
+            <h2><span class="emoji">⚙</span>Bytecode Analysis</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://github.com/dnSpy/dnSpy" target="_blank">.NET: dnSpy</a>
+                    <div class="description">.NET assembly editor and debugger</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://bytecodeviewer.com/" target="_blank">Java: Bytecode Viewer</a>
+                    <div class="description">Java bytecode analysis suite</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://www.free-decompiler.com/flash/" target="_blank">Java: JPEXS Decompiler</a>
+                    <div class="description">Flash and Java decompiler</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/mstrobel/procyon" target="_blank">Java: Procyon</a>
+                    <div class="description">Java metaprogramming toolkit</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="import-rebuild" class="section">
+            <h2><span class="emoji">🪝</span>Import Reconstruction</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://github.com/NtQuery/Scylla" target="_blank">Scylla</a>
+                    <div class="description">Advanced import reconstruction tool</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://www.woodmann.com/collaborative/tools/index.php/ImpREC" target="_blank">ImpRec</a>
+                    <div class="description">Classic import reconstruction</div>
+                </div>
+                <div class="resource-item">
+                    <a href="http://www.woodmann.com/collaborative/tools/images/Bin_LordPE_2010-6-29_3.9_LordPE_1.41_Deluxe_b.zip" target="_blank">LordPE</a>
+                    <div class="description">PE file editor and rebuilder</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="dynamic-analysis" class="section">
+            <h2><span class="emoji">🔎</span>Dynamic Analysis</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://processhacker.sourceforge.net/" target="_blank">Process Hacker</a>
+                    <div class="description">Advanced process viewer</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://learn.microsoft.com/en-us/sysinternals/" target="_blank">ProcMon / ProcExp</a>
+                    <div class="description">Microsoft Sysinternals suite</div>
+                </div>
+                <div class="resource-item">
+                    <a href="http://www.rohitab.com/apimonitor" target="_blank">API Monitor</a>
+                    <div class="description">API monitoring and analysis</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://www.wireshark.org/" target="_blank">Wireshark</a>
+                    <div class="description">Network protocol analyzer</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/Rurik/Noriben" target="_blank">Noriben</a>
+                    <div class="description">Malware analysis sandbox</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/volatilityfoundation/volatility" target="_blank">Volatility</a>
+                    <div class="description">Memory forensics framework</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="debugging" class="section">
+            <h2><span class="emoji">🐎</span>Debugging Tools</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://x64dbg.com/" target="_blank">x64dbg</a>
+                    <div class="description">Windows debugger for x64/x32</div>
+                </div>
+                <div class="resource-item">
+                    <a href="http://www.ollydbg.de/" target="_blank">OllyDbg</a>
+                    <div class="description">Classic Windows debugger</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/" target="_blank">WinDbg</a>
+                    <div class="description">Microsoft's kernel debugger</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://www.gnu.org/software/gdb/" target="_blank">GDB (Linux)</a>
+                    <div class="description">GNU debugger</div>
+                </div>
+                <div class="resource-item">
+                    <a href="http://lldb.llvm.org/" target="_blank">LLDB</a>
+                    <div class="description">LLVM debugger</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/BinaryAnalysisPlatform/qira" target="_blank">QIRA</a>
+                    <div class="description">Timeless debugger</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="macos" class="section">
+            <h2><span class="emoji">🍏</span>Mac Decryption Tools</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="http://stevenygard.com/projects/class-dump/" target="_blank">Class-Dump</a>
+                    <div class="description">Objective-C class interface dumper</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/AlanQuatermain/appencryptor" target="_blank">AppEncryptor</a>
+                    <div class="description">iOS app encryption tool</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/gdbinit/readmem" target="_blank">readmem</a>
+                    <div class="description">macOS memory reading utility</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="document-analysis" class="section">
+            <h2><span class="emoji">📄</span>Document Analysis</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="http://blog.didierstevens.com/programs/pdf-tools/" target="_blank">Didier Stevens PDF Tools</a>
+                    <div class="description">PDF analysis toolkit</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/decalage2/oletools" target="_blank">Oletools</a>
+                    <div class="description">Microsoft Office document analysis</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/cogent/origami-pdf" target="_blank">Origami PDF</a>
+                    <div class="description">PDF manipulation framework</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="scripting" class="section">
+            <h2><span class="emoji">🧬</span>Scripting for RE</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://github.com/idapython/src" target="_blank">IDA Python Src</a>
+                    <div class="description">IDA Pro Python scripting</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/erocarrera/pefile" target="_blank">pefile (Python)</a>
+                    <div class="description">Python PE file parsing library</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://leanpub.com/IDAPython-Book" target="_blank">IDAPython Book</a>
+                    <div class="description">Complete IDA Python guide</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://hex-rays.com/contests/" target="_blank">HexRays IDA Plugin Contest</a>
+                    <div class="description">IDA Pro plugin development</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="android" class="section">
+            <h2><span class="emoji">📱</span>Android Reverse Engineering</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://ibotpeaches.github.io/Apktool/" target="_blank">APKTool</a>
+                    <div class="description">Android APK reverse engineering tool</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/skylot/jadx" target="_blank">JADX</a>
+                    <div class="description">Dex to Java decompiler</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/pxb1988/dex2jar" target="_blank">dex2jar</a>
+                    <div class="description">Android dex to jar converter</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://frida.re/" target="_blank">Frida</a>
+                    <div class="description">Dynamic instrumentation toolkit</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/sensepost/objection" target="_blank">Objection</a>
+                    <div class="description">Mobile app security testing</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank">MobSF</a>
+                    <div class="description">Mobile security framework</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="yara" class="section">
+            <h2><span class="emoji">🧿</span>YARA: Malware Detection Rules</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="https://yara.readthedocs.io/en/stable/" target="_blank">YARA Docs</a>
+                    <div class="description">Official YARA documentation</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/Neo23x0/yarGen" target="_blank">yarGen – Rule Generator</a>
+                    <div class="description">Automatic YARA rule generation</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://gist.github.com/0xtyh/eeabc765e9befad9b80a" target="_blank">YARA Cheatsheet</a>
+                    <div class="description">Quick reference for YARA rules</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bonus" class="section">
+            <h2><span class="emoji">🛠</span>Bonus Links</h2>
+            <div class="resource-grid">
+                <div class="resource-item">
+                    <a href="http://www.kalitut.com/2016/12/best-ethical-hacking-books.html" target="_blank">Top Ethical Hacking Books</a>
+                    <div class="description">Curated list of hacking books</div>
+                </div>
+                <div class="resource-item">
+                    <a href="http://www.kalitut.com/2017/01/Best-reverse-engineering-books.html" target="_blank">Top Reverse Engineering Books</a>
+                    <div class="description">Best RE learning resources</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://github.com/shellphish/awesome-re" target="_blank">Awesome Reverse Engineering GitHub</a>
+                    <div class="description">Comprehensive RE resource collection</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://www.reddit.com/r/ReverseEngineering/" target="_blank">Reverse Engineering Reddit</a>
+                    <div class="description">Active RE community</div>
+                </div>
+                <div class="resource-item">
+                    <a href="https://vx-underground.org" target="_blank">VX-Underground Malware Archive</a>
+                    <div class="description">Malware research collection</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="contribute">
+                <h3><span class="emoji">🔥</span>Want to Add More Resources?</h3>
+                <p>✅ Feel Free to Fork</p>
+                <p>✅ Add your findings too which can help other peoples too</p>
+            </div>
+            <div class="divider"></div>
+            <p>Built with ❤️ for the reverse engineering community</p>
+            <p>Stay curious, stay ethical 🧬</p>
+        </div>
+    </div>
+
+    <script>
+        // Create matrix background effect
+        function createMatrixEffect() {
+            const matrixBg = document.getElementById('matrix-bg');
+            const chars = '01';
+            
+            for (let i = 0; i < 50; i++) {
+                const char = document.createElement('div');
+                char.className = 'matrix-char';
+                char.textContent = chars[Math.floor(Math.random() * chars.length)];
+                char.style.left = Math.random() * 100 + '%';
+                char.style.animationDelay = Math.random() * 10 + 's';
+                char.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                matrixBg.appendChild(char);
+            }
+        }
+
+        // Initialize matrix effect
+        createMatrixEffect();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
